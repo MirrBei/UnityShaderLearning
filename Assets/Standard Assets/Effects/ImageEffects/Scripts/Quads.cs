@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 // same as Triangles but creates quads instead which generally
 // saves fillrate at the expense for more triangles to issue
-namespace Standard_Assets.Effects.ImageEffects.Scripts
+namespace UnityStandardAssets.ImageEffects
 {
     class Quads
     {

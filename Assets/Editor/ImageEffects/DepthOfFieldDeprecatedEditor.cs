@@ -1,11 +1,11 @@
-using Standard_Assets.Effects.ImageEffects.Scripts;
+using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.ImageEffects
+namespace UnityStandardAssets.ImageEffects
 {
     [CustomEditor (typeof(DepthOfFieldDeprecated))]
-    class DepthOfFieldDeprecatedEditor : UnityEditor.Editor
+    class DepthOfFieldDeprecatedEditor : Editor
     {
         SerializedObject serObj;
 

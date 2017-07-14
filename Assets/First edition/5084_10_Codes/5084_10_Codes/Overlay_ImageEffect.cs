@@ -1,72 +1,70 @@
 using UnityEngine;
+using System.Collections;
 
-namespace First_edition._5084_10_Codes._5084_10_Codes
+[ExecuteInEditMode]
+public class Overlay_ImageEffect : MonoBehaviour 
 {
-    [ExecuteInEditMode]
-    public class Overlay_ImageEffect : MonoBehaviour 
-    {
-        #region Variables
-        public Shader curShader;
-        public Texture2D blendTexture;
-        public float blendOpacity = 1.0f;
-        private Material curMaterial;
-        #endregion
+	#region Variables
+	public Shader curShader;
+	public Texture2D blendTexture;
+	public float blendOpacity = 1.0f;
+	private Material curMaterial;
+	#endregion
 	
-        #region Properties
-        Material material
-        {
-            get
-            {
-                if(curMaterial == null)
-                {
-                    curMaterial = new Material(curShader);
-                    curMaterial.hideFlags = HideFlags.HideAndDontSave;
-                }
-                return curMaterial;
-            }
-        }
-        #endregion
+	#region Properties
+	Material material
+	{
+		get
+		{
+			if(curMaterial == null)
+			{
+				curMaterial = new Material(curShader);
+				curMaterial.hideFlags = HideFlags.HideAndDontSave;
+			}
+			return curMaterial;
+		}
+	}
+	#endregion
 	
-        void Start()
-        {
-            if(!SystemInfo.supportsImageEffects)
-            {
-                enabled = false;
-                return;
-            }
+	void Start()
+	{
+		if(!SystemInfo.supportsImageEffects)
+		{
+			enabled = false;
+			return;
+		}
 		
-            if(!curShader && !curShader.isSupported)
-            {
-                enabled = false;
-            }
-        }
+		if(!curShader && !curShader.isSupported)
+		{
+			enabled = false;
+		}
+	}
 	
-        void OnRenderImage(RenderTexture sourceTexture, RenderTexture destTexture)
-        {
-            if(curShader != null)
-            {	
-                material.SetTexture("_BlendTex", blendTexture);
-                material.SetFloat("_Opacity", blendOpacity);
+	void OnRenderImage(RenderTexture sourceTexture, RenderTexture destTexture)
+	{
+		if(curShader != null)
+		{	
+			material.SetTexture("_BlendTex", blendTexture);
+			material.SetFloat("_Opacity", blendOpacity);
 			
-                Graphics.Blit(sourceTexture, destTexture, material);
-            }
-            else
-            {
-                Graphics.Blit(sourceTexture, destTexture);
-            }
-        }
+			Graphics.Blit(sourceTexture, destTexture, material);
+		}
+		else
+		{
+			Graphics.Blit(sourceTexture, destTexture);
+		}
+	}
 	
-        void Update()
-        {
-            blendOpacity = Mathf.Clamp(blendOpacity, 0.0f, 1.0f);
-        }
+	void Update()
+	{
+		blendOpacity = Mathf.Clamp(blendOpacity, 0.0f, 1.0f);
+	}
 	
-        void OnDisable()
-        {
-            if(curMaterial)
-            {
-                DestroyImmediate(curMaterial);
-            }
-        }
-    }
+	void OnDisable()
+	{
+		if(curMaterial)
+		{
+			DestroyImmediate(curMaterial);
+		}
+	}
 }

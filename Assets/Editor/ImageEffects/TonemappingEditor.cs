@@ -1,11 +1,11 @@
-using Standard_Assets.Effects.ImageEffects.Scripts;
+using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.ImageEffects
+namespace UnityStandardAssets.ImageEffects
 {
     [CustomEditor (typeof(Tonemapping))]
-    class TonemappingEditor : UnityEditor.Editor
+    class TonemappingEditor : Editor
     {
         SerializedObject serObj;
 
@@ -42,7 +42,7 @@ namespace Editor.ImageEffects
 
             Camera cam = (target as Tonemapping).GetComponent<Camera>();
             if (cam != null) {
-                if (!cam.hdr) {
+                if (!cam.allowHDR) {
                     EditorGUILayout.HelpBox("The camera is not HDR enabled. This will likely break the Tonemapper.", MessageType.Warning);
                 }
                 else if (!(target as Tonemapping).validRenderTextureFormat) {

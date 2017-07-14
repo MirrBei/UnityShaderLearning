@@ -1,72 +1,70 @@
 using UnityEngine;
+using System.Collections;
 
-namespace First_edition._5084_04_code.Codes.Scripts
+[ExecuteInEditMode]
+public class SwapCubemaps : MonoBehaviour 
 {
-    [ExecuteInEditMode]
-    public class SwapCubemaps : MonoBehaviour 
-    {
-        public Cubemap cubeA;
-        public Cubemap cubeB;
+	public Cubemap cubeA;
+	public Cubemap cubeB;
 	
-        public Transform posA;
-        public Transform posB;
+	public Transform posA;
+	public Transform posB;
 	
-        private Material curMat;
-        private Cubemap curCube;
+	private Material curMat;
+	private Cubemap curCube;
 	
 
-        // Use this for initialization
-        void Start () 
-        {
+	// Use this for initialization
+	void Start () 
+	{
 	
-        }
+	}
 	
-        // Update is called once per frame
-        void Update () 
-        {
-            curMat = GetComponent<Renderer>().sharedMaterial;
-            if(curMat)
-            {
-                curCube = CheckProbeDistance();
-                curMat.SetTexture("_Cubemap", curCube);
+	// Update is called once per frame
+	void Update () 
+	{
+		curMat = GetComponent<Renderer>().sharedMaterial;
+		if(curMat)
+		{
+			curCube = CheckProbeDistance();
+			curMat.SetTexture("_Cubemap", curCube);
 			
-            }
-        }
+		}
+	}
 	
-        private Cubemap CheckProbeDistance()
-        {
-            float distA = Vector3.Distance(transform.position, posA.position);
-            float distB = Vector3.Distance(transform.position, posB.position);
+	private Cubemap CheckProbeDistance()
+	{
+		float distA = Vector3.Distance(transform.position, posA.position);
+		float distB = Vector3.Distance(transform.position, posB.position);
 		
-            if(distA < distB)
-            {
-                return cubeA;
-            }
-            else if(distB < distA)
-            {
-                return cubeB;
-            }
-            else
-            {
-                return cubeA;
-            }
+		if(distA < distB)
+		{
+			return cubeA;
+		}
+		else if(distB < distA)
+		{
+			return cubeB;
+		}
+		else
+		{
+			return cubeA;
+		}
 		
-        }
+	}
 		
 	
-        void OnDrawGizmos()
-        {
-            Gizmos.color = Color.green;
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.green;
 		
-            if(posA)
-            {
-                Gizmos.DrawWireSphere(posA.position, 0.5f);
-            }
+		if(posA)
+		{
+			Gizmos.DrawWireSphere(posA.position, 0.5f);
+		}
 		
-            if(posB)
-            {
-                Gizmos.DrawWireSphere(posB.position, 0.5f);
-            }
-        }
-    }
+		if(posB)
+		{
+			Gizmos.DrawWireSphere(posB.position, 0.5f);
+		}
+	}
 }

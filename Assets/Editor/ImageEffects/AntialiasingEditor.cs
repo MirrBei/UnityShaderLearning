@@ -1,11 +1,11 @@
-using Standard_Assets.Effects.ImageEffects.Scripts;
+using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.ImageEffects
+namespace UnityStandardAssets.ImageEffects
 {
     [CustomEditor(typeof (Antialiasing))]
-    public class AntialiasingEditor : UnityEditor.Editor
+    public class AntialiasingEditor : Editor
     {
         private SerializedObject serObj;
 

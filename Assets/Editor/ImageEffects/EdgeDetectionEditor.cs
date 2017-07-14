@@ -1,11 +1,11 @@
-using Standard_Assets.Effects.ImageEffects.Scripts;
+using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.ImageEffects
+namespace UnityStandardAssets.ImageEffects
 {
     [CustomEditor (typeof(EdgeDetection))]
-    class EdgeDetectionEditor : UnityEditor.Editor
+    class EdgeDetectionEditor : Editor
     {
         SerializedObject serObj;
 

@@ -10,7 +10,7 @@ public class ShowNormals : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        Mesh mesh = GetComponent<MeshFilter>().sharedMesh;
+        Mesh mesh = GetComponent<MeshFilter>().mesh;
 
         Vector3[] vertices = mesh.vertices;
         Vector3[] normals = mesh.normals;

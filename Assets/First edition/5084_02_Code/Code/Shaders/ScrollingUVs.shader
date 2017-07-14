@@ -32,12 +32,17 @@ Shader "CookbookShaders/Chapter02/ScrollingUVs"
 			//before we pass them to the tex2D() function
 			fixed2 scrolledUV = IN.uv_MainTex;
 			
+			//Create variables that store the individual x and y 
+			//components for the uv's scaled by time
+			fixed xScrollValue = _ScrollXSpeed * _Time;
+			fixed yScrollValue = _ScrollYSpeed * _Time;
+			
 			//Apply the final uv offset
-			scrolledUV += fixed2(_ScrollXSpeed * _Time.x, _ScrollYSpeed * _Time.x);
+			scrolledUV += fixed2(xScrollValue, yScrollValue);
 			
 			//Apply textures and tint
-			half4 c = tex2D (_MainTex, scrolledUV) * _MainTint;
-			o.Albedo = c.rgb;
+			half4 c = tex2D (_MainTex, scrolledUV);
+			o.Albedo = c.rgb * _MainTint;
 			o.Alpha = c.a;
 		}
 		ENDCG

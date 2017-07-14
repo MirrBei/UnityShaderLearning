@@ -1,11 +1,11 @@
-using Standard_Assets.Effects.ImageEffects.Scripts;
+using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.ImageEffects
+namespace UnityStandardAssets.ImageEffects
 {
     [CustomEditor (typeof(VignetteAndChromaticAberration))]
-    class VignetteAndChromaticAberrationEditor : UnityEditor.Editor
+    class VignetteAndChromaticAberrationEditor : Editor
     {
         private SerializedObject m_SerObj;
         private SerializedProperty m_Mode;

@@ -16,7 +16,7 @@
 		Cull Off
 
 		CGPROGRAM
-		#pragma surface surf Lambert alpha:fade
+		#pragma surface surf Lambert alpha:fade nolighting
 
 		sampler2D _MainTex;
 		fixed4 _Color;

@@ -1,11 +1,11 @@
-using Standard_Assets.Effects.ImageEffects.Scripts;
+using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor.ImageEffects
+namespace UnityStandardAssets.ImageEffects
 {
     [CustomEditor (typeof( NoiseAndGrain))]
-    class NoiseAndGrainEditor : UnityEditor.Editor
+    class NoiseAndGrainEditor : Editor
     {
         SerializedObject serObj;
 
