@@ -1,4 +1,4 @@
-﻿Shader "Vertex/Vertex" {
+﻿Shader "Vertex/AnimatingVertices" {
 	Properties {
         _MainTex    ("Base (RGB)", 2D) = "white" {}
         _TintAmount ("Tint Amount", Range(0,1)) = 0.5
